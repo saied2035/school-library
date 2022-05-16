@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # main class
 class Person
   attr_reader :id
