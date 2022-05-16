@@ -1,5 +1,7 @@
-require './person'
+# frozen_string_literal: true
 
+require './person'
+# child class
 class Teacher < Person
   def initialize(age, specialization, name = 'Unknown', parent_permission: true)
     super(age, name, parent_permission)
