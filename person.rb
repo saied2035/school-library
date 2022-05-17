@@ -1,5 +1,6 @@
+require './nameable'
 # main class
-class Person
+class Person < nameable
   attr_reader :id
   attr_accessor :name, :age
 
@@ -15,7 +16,9 @@ class Person
 
     false
   end
-
+  def correct_name 
+      @name 
+  end 
   def of_age?
     return true if @age >= 18
 
