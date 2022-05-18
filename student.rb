@@ -14,6 +14,7 @@ class Student < Person
       if classroom.class == Classroom
         @classroom = classroom
         classroom.add_student self
+        return @classroom
      end
   end  
 end
