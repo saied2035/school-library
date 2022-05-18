@@ -24,11 +24,11 @@ class Person < Nameable
   end
 
   def person_rentals rental
-    if rental.class == Rental && !@rentals.include?(rental) 
+    if rental.class == Rental && !@rentals.include?(rental)
       @rentals.push(rental)
-    end  
+    end
   end
-    
+
   def of_age?
     return true if @age >= 18
 
