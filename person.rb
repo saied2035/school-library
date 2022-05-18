@@ -10,6 +10,7 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rentals = []
   end
 
   def can_use_services?
@@ -22,10 +23,17 @@ class Person < Nameable
     @name
   end
 
+  def person_rentals(rental)
+    rental.instance_of?(Rental) && !@rentals.include?(rental) &&
+      @rentals.push(rental)
+    @rentals
+  end
+
   def of_age?
     return true if @age >= 18
 
     false
   end
+
   private :of_age?
 end
