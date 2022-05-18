@@ -23,10 +23,10 @@ class Person < Nameable
     @name
   end
 
-  def person_rentals rental
-    if rental.class == Rental && !@rentals.include?(rental)
+  def person_rentals(rental)
+    rental.instance_of?(Rental) && !@rentals.include?(rental) &&
       @rentals.push(rental)
-    end
+    @rentals
   end
 
   def of_age?

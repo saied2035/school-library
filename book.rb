@@ -1,3 +1,4 @@
+# book class
 class Book
   attr_accessor :title, :author
 
@@ -7,10 +8,9 @@ class Book
     @rentals = []
   end
 
-  def rental_book rental
-    if rental.class == Rental && !@rentals.include?(rental)
-      @rentals.push(rental)
-      rental.book_rentaled self
-    end
+  def rental_book(rental)
+    rental.instance_of(Rental) && !@rentals.include?(rental) &&
+      @rentals.push(rental) &&
+      rental.book_rentaled(self)
   end
 end
