@@ -2,7 +2,7 @@
 
 #  School Library
 
-> OOP school library in Ruby. Practicing classes.
+> OOP school library in Ruby. Practicing classes. Creating simple UI for a school library. 
 
 ## Built With
 
