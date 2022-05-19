@@ -3,7 +3,10 @@
 #  School Library
 
 > OOP school library in Ruby. Practicing classes. Creating simple UI for a school library. 
-
+ 
+## Run the project
+  `run ruby main.rb to start the console`
+  
 ## Built With
 
 - Ruby

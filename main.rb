@@ -13,10 +13,11 @@ def create_student(app)
   print "\nName: "
   name = gets.chomp
   print "\nHas parent permission? [Y/N]: "
-  permission = gets.chomp
-  permission = true if 'Yy'.include?(permission)
-  permission = false if 'Nn'.include?(permission)
-  app.add_student(age.to_i, name, permission)
+  permission_value = gets.chomp
+  permission = permission_value.capitalize
+  permission_value = true if permission.include?('Y')
+  permission_value = false if permission.include?('N')
+  app.add_student(age.to_i, name, permission_value)
 end
 
 def create_teacher(app)
