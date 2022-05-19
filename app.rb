@@ -24,7 +24,9 @@ class App
 		@people_list.push({value:teacher,type:'Teacher'})
 	end
 
-	def add_rental(date,book,person)
+	def add_rental(date,book_num,person_num)
+		book = @book_list[book_num-1]
+		person = @people_list[person_num-1]
 		rental = Rental.new(date,book,person)
 		@rental_list.push(rental)
 	end
