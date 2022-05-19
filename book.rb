@@ -1,3 +1,4 @@
+require './rental'
 # book class
 class Book
   attr_accessor :title, :author
@@ -9,7 +10,7 @@ class Book
   end
 
   def rental_book(rental)
-    rental.instance_of(Rental) && !@rentals.include?(rental) &&
+    rental.instance_of?(Rental) && !@rentals.include?(rental) &&
       @rentals.push(rental) &&
       rental.book_rentaled(self)
   end

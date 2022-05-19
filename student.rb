@@ -1,3 +1,4 @@
+require './classroom'
 require './person'
 # child class
 class Student < Person

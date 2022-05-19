@@ -1,32 +1,32 @@
 require './app'
 
 def display_app
-   puts "Please choose an option by enter a number:"	
+   puts "\nPlease choose an option by enter a number:"	
    puts ["1 - List all books","2 - List all people","3 - Create a person",
          "4 - Create a book","5 - Create a rental","6 - List all rentals for a given person id",
          "7 - Exit"]
 end
 
 def create_student(app)
-     print '\nAge: '
+     print "\nAge: "
      age = gets.chomp
-     print '\nName: '
+     print "\nName: "
      name = gets.chomp
-     print '\n Has parent permission? [Y/N]: '
+     print "\nHas parent permission? [Y/N]: "
      permission = gets.chomp
-     permission = true if permission.capitalize == 'Y'
-     permission = false if permission.capitalize == 'N'
+     permission = true if permission == 'Y' || permission == 'y'
+     permission = false if permission == 'N' || permission == 'n'
      app.add_student(age.to_i,name,permission)	
 end
 
 def create_teacher(app)
-     print '\nAge: '
+     print "\nAge: "
      age = gets.chomp
-     print '\nName: '
+     print "\nName: "
      name = gets.chomp
-     print '\nSpecialization: '
+     print "\nSpecialization: "
      specialization = gets.chomp
-     app.add_teacher(age.to_i,name,permission)	
+     app.add_teacher(age.to_i,name,specialization)	
 end
 
 def create_people(app)
@@ -34,14 +34,16 @@ def create_people(app)
      choice = gets.chomp
      create_student(app) if choice == '1' 
      create_teacher(app) if choice == '2'
+     puts "Person created successfully"
 end
 
 def create_book(app)
-     print '\nTitle: '
+     print "\nTitle: "
      title = gets.chomp
-     print '\nAuthor: '
+     print "\nAuthor: "
      author = gets.chomp
-     app.add_book(title,author)	
+     app.add_book(title,author)
+     puts "Book created successfully"	
 end
 
 def create_rental(app)
@@ -49,16 +51,18 @@ def create_rental(app)
      app.choose_book_to_create_rental
      book_num = gets.chomp
      puts 'Select a person from the following list by number (not id)'
-     choose_person_to_create_rental
+     app.choose_person_to_create_rental
      person_num = gets.chomp
-      print '\nDate: '
+      print "\nDate: "
       date = gets.chomp
-     app.add_rental(date,book_num.to_i,person_num.to_i)	
+     app.add_rental(date,book_num.to_i,person_num.to_i)
+     puts "Rental created successfully"	
 end
 
 def list_rental_for_person(app)
-	print '\nID of person: '
+	print "\nID of person: "
 	id = gets.chomp
+    puts "Rintals:"
 	app.display_rental_for_id(id.to_i)
 end
 
@@ -86,7 +90,7 @@ def choose_action(app)
 end
 
 def main
-  puts "\nWelcome to School Library App!\n\n"
+  puts "\nWelcome to School Library App!\n"
   app = App.new()
   while(1)
    display_app
