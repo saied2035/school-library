@@ -47,6 +47,7 @@ def create_book(app)
 end
 
 def create_rental(app)
+     app.people_list.length > 0 && app.book_list.length > 0 && ( 
      puts 'Select a book from the following list by number'
      app.choose_book_to_create_rental
      book_num = gets.chomp
@@ -56,7 +57,13 @@ def create_rental(app)
       print "\nDate: "
       date = gets.chomp
      app.add_rental(date,book_num.to_i,person_num.to_i)
-     puts "Rental created successfully"	
+     puts "Rental created successfully"
+     )
+     if app.book_list.length == 0
+        puts 'You can\'t create rental because you didn\'t add any books yet.'
+     elsif app.people_list.length == 0
+        puts 'You can\'t create rental because you didn\'t add any people yet.'
+     end     	
 end
 
 def list_rental_for_person(app)

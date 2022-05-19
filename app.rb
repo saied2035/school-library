@@ -3,6 +3,7 @@ require './student'
 require './book'
 require './rental'
 class App
+	attr_reader :book_list, :people_list
 	def initialize
 		@book_list = []
 		@people_list = []
@@ -26,9 +27,7 @@ class App
 
 	def add_rental(date,book_num,person_num)
 		book = @book_list[book_num-1]
-		puts book
 		person = @people_list[person_num-1][:value]
-		puts person
 		rental = Rental.new(date,book,person)
 		@rental_list.push(rental)
 	end
