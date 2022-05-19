@@ -37,7 +37,7 @@ class App
 
 	def display_people
      @people_list.each do |person|
-      puts `[#{person[:type]}] Name: #{{person[:value].name}}, ID: #{person[:value].id}, Age: #{person[:value].age}`
+      puts `[#{person[:type]}] Name: #{person[:value].name}, ID: #{person[:value].id}, Age: #{person[:value].age}`
      end 
 	end
 
@@ -50,7 +50,7 @@ class App
 	end
     def choose_person_to_create_rental
      @people_list.each do |person,i|
-      puts `[#{i+1}) #{person[:type]}] Name: #{{person[:value].name}}, 
+      puts `[#{i+1}) #{person[:type]}] Name: #{person[:value].name}, 
       ID: #{person[:value].id}, Age: #{person[:value].age}`
      end 
     end

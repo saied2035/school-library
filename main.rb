@@ -1,11 +1,9 @@
 require './app'
-def create_app
-	return App.new()
-end
 
 def display_app
-   puts ["1 - List all books","2 - List all people","3 - Create a person"
-         "4 - Create a book","5 - Create a rental","6 - List all rentals for a given person id"
+   puts "Please choose an option by enter a number:"	
+   puts ["1 - List all books","2 - List all people","3 - Create a person",
+         "4 - Create a book","5 - Create a rental","6 - List all rentals for a given person id",
          "7 - Exit"]
 end
 
@@ -18,7 +16,7 @@ def create_student(app)
      permission = gets.chomp
      permission = true if permission.capitalize == 'Y'
      permission = false if permission.capitalize == 'N'
-     app.add_student(age,name,permission)	
+     app.add_student(age.to_i,name,permission)	
 end
 
 def create_teacher(app)
@@ -28,14 +26,14 @@ def create_teacher(app)
      name = gets.chomp
      print '\nSpecialization: '
      specialization = gets.chomp
-     app.add_teacher(age,name,permission)	
+     app.add_teacher(age.to_i,name,permission)	
 end
 
 def create_people(app)
      print 'Do you want to create a student (1) or a teacher (2)? [input the number]: '
      choice = gets.chomp
-     create_student(app) if choice == 1 
-     create_teacher(app) if choice == 2
+     create_student(app) if choice == '1' 
+     create_teacher(app) if choice == '2'
 end
 
 def create_book(app)
@@ -55,34 +53,45 @@ def create_rental(app)
      person_num = gets.chomp
       print '\nDate: '
       date = gets.chomp
-     app.add_rental(date,book_num,person_num)	
+     app.add_rental(date,book_num.to_i,person_num.to_i)	
 end
 
 def list_rental_for_person(app)
 	print '\nID of person: '
 	id = gets.chomp
-	app.display_rental_for_id(id)
+	app.display_rental_for_id(id.to_i)
 end
 
 def choose_action(app)
-	puts "Please choose an option by enter a number:"
 	decision = gets.chomp
 	case decision
-    when 1
+    when '1'
      app.display_books
-    when 2
+    when '2'
      app.display_people
-    when 3
+    when '3'
      create_people(app)	
-    when 4
+    when '4'
       create_book(app)
-    when 5
+    when '5'
       create_rental(app)
-    when 6
+    when '6'
       list_rental_for_person(app)
-    when 7
-      break;
+    when '7'
+      puts "Thank you for using this app!"	
+      exit
     else
       puts "please choose of the list"        
 	end	
-end         	
+end
+
+def main
+  puts "\nWelcome to School Library App!\n\n"
+  app = App.new()
+  while(1)
+   display_app
+   choose_action(app)
+  end
+end
+
+main         	
