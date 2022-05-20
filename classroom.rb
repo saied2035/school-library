@@ -1,3 +1,4 @@
+require './student'
 # classroom class
 class Classroom
   attr_accessor :lablel

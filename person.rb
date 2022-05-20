@@ -1,4 +1,5 @@
 require './nameable'
+require './rental'
 # main class
 class Person < Nameable
   attr_reader :id
