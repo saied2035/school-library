@@ -14,7 +14,6 @@ class App
 
   def add_book(title, author)
     book = Book.new(title, author)
-    @book_list.push(book)
   end
 
   def add_student(age, name, parent_permission)
