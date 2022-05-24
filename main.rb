@@ -65,7 +65,7 @@ end
 def list_rental_for_person(app)
   print "\nID of person: "
   id = gets.chomp
-  puts 'Rintals:'
+  puts 'Rentals:'
   app.display_rental_for_id(id.to_i)
 end
 

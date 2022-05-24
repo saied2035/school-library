@@ -2,6 +2,7 @@ require './teacher'
 require './student'
 require './book'
 require './rental'
+require './display.rb'
 # app class
 class App
   attr_reader :book_list, :people_list
@@ -35,21 +36,15 @@ class App
   end
 
   def display_books
-    @book_list.each { |book| puts "Title: \"#{book.title}\", Author: #{book.author}" }
+    Display.new.display_books(@book_list)
   end
 
   def display_people
-    @people_list.each do |person|
-      puts "[#{person[:type]}] Name: #{person[:value].name}, ID: #{person[:value].id}, Age: #{person[:value].age}"
-    end
+     Display.new.display_people(@people_list)
   end
 
   def display_rental_for_id(id)
-    @rental_list.each do |rental|
-      rental.person.id == id && (
-        puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
-      )
-    end
+    Display.new.display_rentals(id,@rental_list)
   end
 
   def choose_person_to_create_rental
