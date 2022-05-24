@@ -1,26 +1,29 @@
 require './display'
-require './createClasses'
+require './userInteraction'
 # app class
 class App
   attr_reader :create_classes
   def initialize
-    @create_classes = CreateClasses.new
+    @user_interaction = UserInteraction.new
+    @create_classes = @user_interaction.create_classes
   end
 
-  def add_book(title, author)
-      @create_classes.add_book(title,author)
-  end
+  def run
+   puts "\nPlease choose an option by enter a number:"
+   puts ['1 - List all books', '2 - List all people', '3 - Create a person',
+        '4 - Create a book', '5 - Create a rental', '6 - List all rentals for a given person id',
+        '7 - Exit']
+   decision = gets.chomp
+   
+   puts 'please choose of the list' unless '1234567'.include?(decision)
 
-  def add_student(age, name, parent_permission)
-      @create_classes.add_student(age,name,parent_permission)
-  end
+   methods = [
+     method(:display_books), method(:display_people), method(:create_people),
+     method(:create_book), method(:handle_rental), method(:list_rental_for_person),
+     method(:exit_program)
+   ]
 
-  def add_teacher(age, name, specialization)
-      @create_classes.add_teacher(age,name,specialization)
-  end
-
-  def add_rental(date, book_num, person_num)
-      @create_classes.add_rental(date, book_num, person_num)
+  '1234567'.include?(decision) && methods[decision.to_i - 1].call     
   end
 
   def display_books
@@ -31,22 +34,26 @@ class App
      Display.new.display_people(@create_classes.people_list)
   end
 
-  def display_rental_for_id(id)
-    Display.new.display_rentals(id,@create_classes.rental_list)
+  def create_people
+      @user_interaction.create_people
   end
 
-  def choose_person_to_create_rental
-    puts 'Select a person from the following list by number (not id)'
-    @create_classes.people_list.each_with_index do |person, i|
-      puts "#{i + 1}) [#{person[:type]}] Name: #{person[:value].name},"
-      + " ID: #{person[:value].id}, Age: #{person[:value].age}"
-    end
+  def create_book
+     @user_interaction.create_book
   end
 
-  def choose_book_to_create_rental
-    puts 'Select a book from the following list by number'
-    @create_classes.book_list.each_with_index do |book, i|
-      puts "#{i + 1}) Title: \"#{book.title}\", Author: #{book.author}"
-    end
+  def handle_rental
+      @user_interaction.handle_rental
   end
+
+
+  def list_rental_for_person
+    Display.new.display_rentals(@create_classes.rental_list)
+  end
+
+  def exit_program
+    puts 'Thank you for using this app!'
+    exit
+  end
+
 end

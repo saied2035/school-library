@@ -10,7 +10,9 @@ class Display
       end
 	end
 
-	def display_rentals(id,rentals)
+	def display_rentals(rentals)
+		print "\nId of person: "
+		id = gets.chomp.to_i
 	  rentals.each do |rental|
       rental.person.id == id && (
         puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
