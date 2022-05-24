@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # display class
 class Display
   def display_books(books)

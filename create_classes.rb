@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require './teacher'
 require './student'
 require './book'

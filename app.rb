@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require './display'
 require './user_interaction'
 # app class
