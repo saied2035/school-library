@@ -1,11 +1,11 @@
 require './student'
 # classroom class
 class Classroom
-  attr_accessor :lablel
+  attr_accessor :label
   attr_reader :student_array
 
-  def initialize(lablel)
-    @lablel = lablel
+  def initialize(label)
+    @label = label
     @student_array = []
   end
 
