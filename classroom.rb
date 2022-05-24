@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './student'
 # classroom class
 class Classroom

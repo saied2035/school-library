@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './decorator'
 # trim name
 class TrimmerDecorator < Decorator
