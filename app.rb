@@ -1,55 +1,43 @@
-require './teacher'
-require './student'
-require './book'
-require './rental'
-require './display.rb'
+require './display'
+require './createClasses'
 # app class
 class App
-  attr_reader :book_list, :people_list
-
+  attr_reader :create_classes
   def initialize
-    @book_list = []
-    @people_list = []
-    @rental_list = []
+    @create_classes = CreateClasses.new
   end
 
   def add_book(title, author)
-    book = Book.new(title, author)
-    @book_list.push(book)
+      @create_classes.add_book(title,author)
   end
 
   def add_student(age, name, parent_permission)
-    student = Student.new(age, nil, name, parent_permission: parent_permission)
-    @people_list.push({ value: student, type: 'Student' })
+      @create_classes.add_student(age,name,parent_permission)
   end
 
   def add_teacher(age, name, specialization)
-    teacher = Teacher.new(age, specialization, name)
-    @people_list.push({ value: teacher, type: 'Teacher' })
+      @create_classes.add_teacher(age,name,specialization)
   end
 
   def add_rental(date, book_num, person_num)
-    book = @book_list[book_num - 1]
-    person = @people_list[person_num - 1][:value]
-    rental = Rental.new(date, book, person)
-    @rental_list.push(rental)
+      @create_classes.add_rental(date, book_num, person_num)
   end
 
   def display_books
-    Display.new.display_books(@book_list)
+    Display.new.display_books(@create_classes.book_list)
   end
 
   def display_people
-     Display.new.display_people(@people_list)
+     Display.new.display_people(@create_classes.people_list)
   end
 
   def display_rental_for_id(id)
-    Display.new.display_rentals(id,@rental_list)
+    Display.new.display_rentals(id,@create_classes.rental_list)
   end
 
   def choose_person_to_create_rental
     puts 'Select a person from the following list by number (not id)'
-    @people_list.each_with_index do |person, i|
+    @create_classes.people_list.each_with_index do |person, i|
       puts "#{i + 1}) [#{person[:type]}] Name: #{person[:value].name},"
       + " ID: #{person[:value].id}, Age: #{person[:value].age}"
     end
@@ -57,7 +45,7 @@ class App
 
   def choose_book_to_create_rental
     puts 'Select a book from the following list by number'
-    @book_list.each_with_index do |book, i|
+    @create_classes.book_list.each_with_index do |book, i|
       puts "#{i + 1}) Title: \"#{book.title}\", Author: #{book.author}"
     end
   end

@@ -59,7 +59,8 @@ def create_rental(app)
 end
 
 def handle_rental(app)
-  app.people_list.length.positive? && app.book_list.length.positive? && create_rental(app)
+  app.create_classes.people_list.length.positive? && app.create_classes.book_list.length.positive? && 
+  create_rental(app)
 end
 
 def list_rental_for_person(app)
