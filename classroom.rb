@@ -10,7 +10,6 @@ class Classroom
   end
 
   def add_student(student)
-     puts "we are inside method of calssroom"
     !@student_array.include?(student) && student.instance_of?(Student) &&
       @student_array.push(student) &&
       student.add_classroom(self)
