@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './create_classes'
 # user interactions
 class UserInteraction
@@ -10,6 +12,11 @@ class UserInteraction
   def create_people
     print 'Do you want to create a student (1) or a teacher (2)? [input the number]: '
     choice = gets.chomp
+    if choice != '1' && choice != '2'
+      puts "\n*** Please enter valid choice: press 1 for create a student or 2 for create a teacher ***\n"
+      method(:create_people).call
+      return
+    end
     create_student if choice == '1'
     create_teacher if choice == '2'
     puts 'Person created successfully'
