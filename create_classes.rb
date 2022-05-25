@@ -1,20 +1,19 @@
 require './teacher'
 require './student'
-require './book'
+require './book_storage'
 require './rental'
 # create classes
 class CreateClasses
-  attr_reader :book_list, :people_list, :rental_list
+  attr_reader :book_storage, :people_list, :rental_list
 
   def initialize
-    @book_list = []
+    @book_storage = BookStorage.new
     @people_list = []
     @rental_list = []
   end
 
   def add_book(title, author)
-    book = Book.new(title, author)
-    @book_list.push(book)
+    @book_storage.store_book(title,author)
   end
 
   def add_student(age, name, parent_permission)

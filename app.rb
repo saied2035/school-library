@@ -7,6 +7,7 @@ class App
   def initialize
     @user_interaction = UserInteraction.new
     @create_classes = @user_interaction.create_classes
+    @book_storage = @create_classes.book_storage
   end
 
   def display_choices
@@ -26,7 +27,7 @@ class App
   end
 
   def display_books
-    Display.new.display_books(@create_classes.book_list)
+    Display.new.display_books(@book_storage.book_list)
   end
 
   def display_people
