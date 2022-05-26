@@ -1,31 +1,20 @@
 {
-  "student": [
+  "people": [
     {
-      "name": "bush",
-      "age": "99",
-      "parent_permission": true
+      "type": "Student",
+      "value": {
+        "name": "Lynette",
+        "id": "962",
+        "age": "15"
+      }
     },
     {
-      "name": "ilumi",
-      "age": "66",
-      "parent_permission": false
-    },
-    {
-      "name": "saied",
-      "age": "22",
-      "parent_permission": true
-    }
-  ],
-  "teacher": [
-    {
-      "name": "dd",
-      "age": "11",
-      "specialization": "q"
-    },
-    {
-      "name": "tea",
-      "age": "11",
-      "specialization": "math"
+      "type": "Teacher",
+      "value": {
+        "name": "Saied",
+        "id": "620",
+        "age": "24"
+      }
     }
   ]
 }

@@ -11,7 +11,7 @@ class Display
   end
 
   def display_rentals(rentals)
-    rentals[0].person && (
+    rentals.length.positive? && (
     print "\nId of person: "
     id = gets.chomp.to_i
     puts 'Rentals: '

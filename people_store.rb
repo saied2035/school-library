@@ -1,51 +1,61 @@
-# frozen_string_literal: true
-
+require './teacher'
+require './student'
 require 'json'
-require 'create_classes'
-
 # Store people in json file
-class StudentStore
-  attr_accessor :age, :name, :permission_value, :file
-
-  def initialize(age, name, permission_value)
-    @age = age
-    @name = name
-    @permission_value = permission_value
-    @file = File.open('people.json', 'a')
-    @create_class = CreateClasses.new
-  end
-
-  def store_student
-    file = File.read('people.json')
-    hash_data = JSON.parse(file)
-    hash_data['student'].push({"name": @name, "age": @age, "parent_permission": @permission_value})
-    File.write('people.json', JSON.pretty_generate(hash_data))
-  end
-
+class PeopleStore
+   attr_reader :people_list
+  def initialize
+     @people_list = []
+  end  
   def load_people
-    file = File.read('people.json')
-    hash_data = JSON.parse(file)
-    student_list = hash_data['student']
-    teacher_list = hash_data['teacher']
-    student_list.each { |item| @create_class.add_book(item['age'], item['name'], item['parent_permission']) }
-    teacher_list.each { |item| @create_class.add_book(item['age'], item['name'], item['specialization']) }
-  end
-end
-
-# store teacher data
-class TeacherStore
-  attr_accessor :age, :name, :specialization
-
-  def initialize(age, name, specialization)
-    @age = age
-    @name = name
-    @specialization = specialization
+    File.exist?('./people.json') && (
+    people = JSON.parse(File.read('./people.json'))['people']
+    people.each do |person|
+       person['type'] == 'Student' && (
+       add_student(person['value']['age'],person['value']['name'],person['value']['parent_permission'])
+       )
+       person['type'] == 'Teacher' && (
+       add_teacher(person['value']['age'],person['value']['name'],person['value']['specialization'])
+       )
+       edit_IDS
+    end
+  )
+    File.write('people.json', '{"people":[]}') unless File.exist?('./people.json')
+    @people_list
   end
 
-  def store_teacher
-    file = File.read('people.json')
-    hash_data = JSON.parse(file)
-    hash_data['teacher'].push({ "name": @name, "age": @age, "specialization": @specialization })
-    File.write('people.json', JSON.pretty_generate(hash_data))
+  def add_student(age, name, parent_permission)
+    student = Student.new(age, nil, name, parent_permission: parent_permission)
+    @people_list.push({ value: student, type: 'Student' })
   end
-end
+
+  def add_teacher(age, name, specialization)
+    teacher = Teacher.new(age, specialization, name)
+    @people_list.push({ value: teacher, type: 'Teacher' })
+  end
+
+  def store_people
+    file = File.read('./people.json')
+    parsed_json = JSON.parse(file)
+    edit = []
+    @people_list.length != parsed_json['people'].length && @people_list.length.positive? && (
+    @people_list.each do |person|
+      edit = parsed_json['people'].push({ 'type' => person[:type], 
+        'value' => { 'name' => person[:value].name, 'id'=> person[:value].id.to_s, 
+        'age'=> person[:value].age.to_s  } })
+    end
+    File.write('./people.json', JSON.pretty_generate({ people: edit })))
+  end
+
+  private
+
+  def edit_IDS
+    file = File.read('./people.json')
+    parsed_json = JSON.parse(file)
+
+    @people_list.each_with_index do |person,i|
+      parsed_json['people'][i]['value']['id'] = person[:value].id.to_s
+    end
+    File.write('./people.json', JSON.pretty_generate(parsed_json))   
+  end
+end  

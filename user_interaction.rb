@@ -1,5 +1,4 @@
 require './create_classes'
-
 # user interactions
 class UserInteraction
   attr_reader :create_classes
@@ -31,8 +30,8 @@ class UserInteraction
   end
 
   def handle_rental
-    @create_classes.people_list.length.positive? && @create_classes.book_storage.book_list.length.positive? &&
-      create_rental
+    @create_classes.people_storage.people_list.length.positive? && 
+    @create_classes.book_storage.book_list.length.positive? && create_rental
   end
 
   private
@@ -48,8 +47,6 @@ class UserInteraction
     permission_value = true if permission.include?('Y')
     permission_value = false if permission.include?('N')
     @create_classes.add_student(age, name, permission_value)
-    student_obj = StudentStore.new(age, name, permission_value)
-    student_obj.store_student
   end
 
   def create_teacher
@@ -60,8 +57,6 @@ class UserInteraction
     print "\nSpecialization: "
     specialization = gets.chomp
     @create_classes.add_teacher(age, name, specialization)
-    teacher_obj = TeacherStore.new(age,name,specialization)
-    teacher_obj.store_teacher
   end
 
   def create_rental
@@ -84,7 +79,7 @@ class UserInteraction
 
   def list_people_for_rental
     puts 'Select a person from the following list by number (not id)'
-    @create_classes.people_list.each_with_index do |person, i|
+    @create_classes.people_storage.people_list.each_with_index do |person, i|
       print "#{i + 1}) [#{person[:type]}] Name: #{person[:value].name}, "
       print "ID: #{person[:value].id}, Age: #{person[:value].age}\n"
     end

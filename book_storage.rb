@@ -17,6 +17,7 @@ class BookStorage
     end
   )
     File.write('books.json', '{"books":[]}') unless File.exist?('./books.json')
+    @book_list
   end
 
   def add_book(title, author)

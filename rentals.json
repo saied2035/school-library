@@ -1,10 +1,18 @@
 {
   "rentals": [
     {
-      "id": "230",
-      "date": "2022-6-24",
+      "id": "620",
+      "browerer": "Saied",
+      "date": "2022-4-24",
       "title": "Title1",
       "author": "Author1"
+    },
+    {
+      "id": "620",
+      "browerer": "Saied",
+      "date": "2022-7-30",
+      "title": "Title2",
+      "author": "Author2"
     }
   ]
 }

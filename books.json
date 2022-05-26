@@ -3,6 +3,10 @@
     {
       "title": "Title1",
       "author": "Author1"
+    },
+    {
+      "title": "Title2",
+      "author": "Author2"
     }
   ]
 }

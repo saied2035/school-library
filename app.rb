@@ -8,6 +8,7 @@ class App
     @user_interaction = UserInteraction.new
     @create_classes = @user_interaction.create_classes
     @book_storage = @create_classes.book_storage
+    @people_storage = @create_classes.people_storage
     @rental_storage = @create_classes.rental_storage
   end
 
@@ -28,7 +29,7 @@ class App
   end
 
   def display_people
-    Display.new.display_people(@create_classes.people_list)
+    Display.new.display_people(@people_storage.people_list)
   end
 
   def create_people
@@ -50,8 +51,12 @@ class App
   def exit_program
     puts 'Thank you for using this app!'
     @book_storage.book_list.length.positive? && @book_storage.store_books
-    @book_storage.book_list.length.positive? && create_classes.people_list.length.positive? &&
-      @rental_storage.store_rentals
+
+    @people_storage.people_list.length.positive? && @people_storage.store_people
+
+    @book_storage.book_list.length.positive? && @people_storage.people_list.length.positive? &&
+    @rental_storage.rental_list.length.positive? && @rental_storage.store_rentals
+
     exit
   end
 
