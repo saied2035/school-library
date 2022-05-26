@@ -1,0 +1,31 @@
+{
+  "student": [
+    {
+      "name": "bush",
+      "age": "99",
+      "parent_permission": true
+    },
+    {
+      "name": "ilumi",
+      "age": "66",
+      "parent_permission": false
+    },
+    {
+      "name": "saied",
+      "age": "22",
+      "parent_permission": true
+    }
+  ],
+  "teacher": [
+    {
+      "name": "dd",
+      "age": "11",
+      "specialization": "q"
+    },
+    {
+      "name": "tea",
+      "age": "11",
+      "specialization": "math"
+    }
+  ]
+}
