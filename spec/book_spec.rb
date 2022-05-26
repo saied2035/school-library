@@ -19,9 +19,8 @@ describe Book do
   	 end
 
   	it "test fail to add rental" do
-     	 rental = Rental.new('2022-8-24',"book",Person.new(24, 'saied', parent_permission: true))
-  	 	 @book.rental_book(rental)
-  	 	 expect(@book.rentals.length).to eq 1
+  	 	 @book.rental_book("rental")
+  	 	 expect(@book.rentals.length).to eq 0
     end
    
 end	
