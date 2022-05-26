@@ -30,8 +30,8 @@ class UserInteraction
   end
 
   def handle_rental
-    @create_classes.people_storage.people_list.length.positive? && 
-    @create_classes.book_storage.book_list.length.positive? && create_rental
+    @create_classes.people_storage.people_list.length.positive? &&
+      @create_classes.book_storage.book_list.length.positive? && create_rental
   end
 
   private

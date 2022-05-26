@@ -20,7 +20,7 @@ class App
 
   def run
     decision = gets.chomp
-    puts 'please choose of the list' unless '1234567'.include?(decision)
+    puts 'please choose of the list' unless (1..7).include?(decision.to_i)
     actions(decision)
   end
 
@@ -54,7 +54,6 @@ class App
 
     @people_storage.people_list.length.positive? && @people_storage.store_people
 
-    @book_storage.book_list.length.positive? && @people_storage.people_list.length.positive? &&
     @rental_storage.rental_list.length.positive? && @rental_storage.store_rentals
 
     exit

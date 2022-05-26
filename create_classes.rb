@@ -19,11 +19,11 @@ class CreateClasses
   end
 
   def add_student(age, name, parent_permission)
-    @people_storage.add_student(age,name,parent_permission)
+    @people_storage.add_student(age, name, parent_permission)
   end
 
   def add_teacher(age, name, specialization)
-    @people_storage.add_teacher(age,name,specialization)
+    @people_storage.add_teacher(age, name, specialization)
   end
 
   def add_rental(date, book_num, person_num)
