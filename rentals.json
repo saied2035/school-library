@@ -1,0 +1,10 @@
+{
+  "rentals": [
+    {
+      "id": "230",
+      "date": "2022-6-24",
+      "title": "Title1",
+      "author": "Author1"
+    }
+  ]
+}

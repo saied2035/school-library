@@ -31,7 +31,7 @@ class UserInteraction
   end
 
   def handle_rental
-    @create_classes.people_list.length.positive? && @create_classes.book_list.length.positive? &&
+    @create_classes.people_list.length.positive? && @create_classes.book_storage.book_list.length.positive? &&
       create_rental
   end
 
@@ -77,7 +77,7 @@ class UserInteraction
 
   def list_book_for_rental
     puts 'Select a book from the following list by number'
-    @create_classes.book_list.each_with_index do |book, i|
+    @create_classes.book_storage.book_list.each_with_index do |book, i|
       puts "#{i + 1}) Title: \"#{book.title}\", Author: #{book.author}"
     end
   end

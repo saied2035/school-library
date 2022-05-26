@@ -11,6 +11,7 @@ class Display
   end
 
   def display_rentals(rentals)
+    rentals[0].person && (
     print "\nId of person: "
     id = gets.chomp.to_i
     puts 'Rentals: '
@@ -19,5 +20,6 @@ class Display
         puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
       )
     end
+  )
   end
 end
