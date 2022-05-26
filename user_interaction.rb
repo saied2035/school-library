@@ -48,8 +48,6 @@ class UserInteraction
     permission_value = true if permission.include?('Y')
     permission_value = false if permission.include?('N')
     @create_classes.add_student(age, name, permission_value)
-    student_obj = StudentStore.new(age, name, permission_value)
-    student_obj.store_student
   end
 
   def create_teacher
@@ -60,8 +58,6 @@ class UserInteraction
     print "\nSpecialization: "
     specialization = gets.chomp
     @create_classes.add_teacher(age, name, specialization)
-    teacher_obj = TeacherStore.new(age,name,specialization)
-    teacher_obj.store_teacher
   end
 
   def create_rental
