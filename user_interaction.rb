@@ -30,8 +30,8 @@ class UserInteraction
   end
 
   def handle_rental
-    @create_classes.people_list.length.positive? && @create_classes.book_list.length.positive? &&
-      create_rental
+    @create_classes.people_storage.people_list.length.positive? &&
+      @create_classes.book_storage.book_list.length.positive? && create_rental
   end
 
   private
@@ -72,14 +72,14 @@ class UserInteraction
 
   def list_book_for_rental
     puts 'Select a book from the following list by number'
-    @create_classes.book_list.each_with_index do |book, i|
+    @create_classes.book_storage.book_list.each_with_index do |book, i|
       puts "#{i + 1}) Title: \"#{book.title}\", Author: #{book.author}"
     end
   end
 
   def list_people_for_rental
     puts 'Select a person from the following list by number (not id)'
-    @create_classes.people_list.each_with_index do |person, i|
+    @create_classes.people_storage.people_list.each_with_index do |person, i|
       print "#{i + 1}) [#{person[:type]}] Name: #{person[:value].name}, "
       print "ID: #{person[:value].id}, Age: #{person[:value].age}\n"
     end
