@@ -29,6 +29,12 @@ for https:
 - Twitter: [@SaiedGaffer](https://twitter.com/SaiedGaffer)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/saiedgaffer/)
 
+👤 **Bushra Mustofa**
+
+- GitHub: [@bushmusi](https://github.com/bushmusi)
+- Twitter: [@bushera_mestofa](https://twitter.com/bushera_mestofa)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/bushra-mustofa)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
