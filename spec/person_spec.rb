@@ -1,6 +1,4 @@
 require_relative '../people_store'
-require_relative '../student'
-require_relative '../teacher'
 
 describe 'People Add and List' do
   context 'Checking data before at instant' do
